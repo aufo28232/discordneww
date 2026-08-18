@@ -8,4 +8,4 @@
 window.SIGNALING_SERVER_URL =
   location.hostname === 'localhost' || location.hostname === '127.0.0.1'
     ? 'http://localhost:3001'
-    : 'https://SEU-APP.onrender.com'; // <-- troque isso depois de criar o Web Service no Render
+    : 'https://discordneww-signaling.onrender.com';
