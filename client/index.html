@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiceCall</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="home-wrap">
+    <div class="home-card">
+      <h1>VoiceCall</h1>
+      <p class="subtitle">Chamada de voz e tela entre amigos. Sem conta, sem chat — só a sala.</p>
+
+      <div class="error-banner" id="error-banner"></div>
+
+      <div class="field">
+        <label for="nickname">Seu nome</label>
+        <input id="nickname" type="text" placeholder="Como quer aparecer na sala?" maxlength="32" autocomplete="off" />
+      </div>
+
+      <div class="stack">
+        <button class="btn" id="create-call-btn">Criar chamada</button>
+      </div>
+
+      <div class="divider">ou entre em uma sala existente</div>
+
+      <div class="field">
+        <label for="join-code">Link ou código da sala</label>
+        <input id="join-code" type="text" placeholder="Cole aqui o link do convite" autocomplete="off" />
+      </div>
+      <div class="stack">
+        <button class="btn secondary" id="join-call-btn">Entrar na chamada</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/home.js"></script>
+</body>
+</html>

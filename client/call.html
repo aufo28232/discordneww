@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiceCall — Sala</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- Tela de pre-entrada: nome + teste de microfone antes de conectar na sala -->
+  <div class="prejoin-overlay" id="prejoin-overlay">
+    <div class="home-card">
+      <h1>Antes de entrar</h1>
+      <p class="subtitle">Sala <code id="prejoin-room-id"></code></p>
+
+      <div class="error-banner" id="prejoin-error"></div>
+
+      <div class="field">
+        <label for="prejoin-nickname">Seu nome</label>
+        <input id="prejoin-nickname" type="text" placeholder="Como quer aparecer na sala?" maxlength="32" autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label for="prejoin-mic-select">Microfone</label>
+        <select id="prejoin-mic-select" disabled>
+          <option value="">Solicitando permissão...</option>
+        </select>
+      </div>
+
+      <div class="stack">
+        <button class="btn" id="prejoin-join-btn" disabled>Entrar na chamada</button>
+        <button class="btn secondary hidden" id="prejoin-join-muted-btn">Entrar sem microfone</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- UI da chamada em si, oculta ate o usuario confirmar a pre-entrada -->
+  <div class="call-wrap hidden" id="call-wrap">
+    <div class="topbar">
+      <div class="room-info">
+        <span>Sala:</span>
+        <code id="room-id-label"></code>
+        <button class="btn secondary" id="copy-invite-btn" style="width:auto;padding:6px 12px;">Copiar link do convite</button>
+      </div>
+      <span class="status-pill" id="status-pill">conectando...</span>
+    </div>
+
+    <div class="main-stage">
+      <div class="participants-grid" id="participants-grid"></div>
+
+      <div class="featured-area hidden" id="featured-area">
+        <div class="featured-slot" id="featured-slot"></div>
+        <div class="side-rail" id="side-rail"></div>
+      </div>
+    </div>
+
+    <div class="controls-bar">
+      <button class="icon-btn active" id="mute-btn" title="Mutar/desmutar microfone">🎤</button>
+
+      <div class="device-select-wrap">
+        <select id="mic-select" title="Escolher microfone"></select>
+      </div>
+
+      <button class="icon-btn" id="share-btn" title="Compartilhar tela">🖥️</button>
+
+      <button class="icon-btn leave" id="leave-btn" title="Sair da chamada">Sair</button>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+
+  <!-- socket.io-client via CDN: sem essa dependencia nao ha bundler no projeto,
+       entao carregamos como script classico e usamos o global `io`. -->
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="/js/config.js"></script>
+  <script type="module" src="/js/call.js"></script>
+</body>
+</html>
